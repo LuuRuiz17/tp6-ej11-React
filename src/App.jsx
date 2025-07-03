@@ -42,7 +42,7 @@ function App() {
     obtenerNoticia();
     console.log("Lo que tiene noticias: ");
     console.log(noticias);
-  } , []);
+  }, []);
 
   // const filtrarRespuesta = async (dato) => {
   //   // console.log(dato.filtro);
@@ -76,12 +76,12 @@ function App() {
 
 
   const filtrarRespuesta = async (dato) => {
-    // console.log(dato.filtro);
-    // const respuesta = await fetch(`https://newsdata.io/api/1/latest?apikey=pub_22b6a37c0d77443c9b412c3fa017180e&language=es&category=${dato.filtro}`);
-    // if (respuesta.status === 200) {
-    //   const noticia = await respuesta.json();
-    //   console.log(noticia);
-    // }
+    console.log(dato.filtro);
+    const respuesta = await fetch(`https://newsdata.io/api/1/latest?apikey=pub_22b6a37c0d77443c9b412c3fa017180e&language=es&category=${dato.filtro}`);
+    if (respuesta.status === 200) {
+      const noticia = await respuesta.json();
+      setNoticias(noticia.results);
+    }
   }
 
   const obtenerNoticia = async () => {
@@ -102,8 +102,8 @@ function App() {
     <>
       <Titulo></Titulo>
       <Form className="container" onSubmit={handleSubmit(filtrarRespuesta)}>
-        <Row>
-          <Col xs={11}>
+        <Row className="mx-auto">
+          <Col xs={12} className="d-flex">
             <Form.Select aria-label="Default select example"{...register('filtro')}>
               <option>Buscar por categoría</option>
               <option value="sports">Deportes</option>
@@ -113,14 +113,11 @@ function App() {
               <option value="food">Comida</option>
               <option value="crime">Policiales</option>
             </Form.Select>
-          </Col>
-          <Col className="d-flex flex-column justify-content-center me-auto" xs={1}>
-            <button type="submit"><i className="bi bi-search mx-auto"></i></button>
+            <button type="submit" className="btn-form ms-auto"><i className="bi bi-search ms-2"></i></button>
           </Col>
         </Row>
       </Form>
       <ListaNoticias noticias={noticias}></ListaNoticias>
-      {/* noticia={noticia} */}
     </>
   )
 }

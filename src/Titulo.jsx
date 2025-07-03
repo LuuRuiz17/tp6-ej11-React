@@ -1,6 +1,6 @@
 const Titulo = () => {
     return (
-        <h1 className="my-3 text-center">Noticias</h1>
+        <h1 className="my-3 text-center titulo">Noticias</h1>
     );
 };
 

@@ -1,18 +1,18 @@
 import { Card } from "react-bootstrap";
+import imgDefault from "./assets/img-noticias-default.jpg"
 
-const Noticia = ({noticia}) => {
+const Noticia = ({ noticia }) => {
     return (
-        <Card className = "card h-100">
-            <Card.Img variant="top" src={noticia.image_url} alt="imagen de la Noticia"/>
-            <Card.Body className="bg-info">
-                <Card.Text>{noticia.creator}</Card.Text>
-                <Card.Title>{noticia.title}</Card.Title>
-                <Card.Text className="cortar-texto">{noticia.description}</Card.Text>
-            </Card.Body>
-            <Card.Body>
-                <Card.Link href={noticia.link}>Ver más</Card.Link>
-            </Card.Body>
-        </Card>
+        <a href={noticia.link} className="enlace">
+            <Card className="card h-100">
+                <Card.Img className="img-card" variant="top" src={noticia.image_url ? noticia.image_url : imgDefault} alt="imagen de la Noticia" />
+                <Card.Body className="h-100">
+                    <Card.Text>{noticia.creator ? noticia.creator : "Autor anónimo"}</Card.Text>
+                    <Card.Title>{noticia.title}</Card.Title>
+                    <Card.Text className="cortar-texto">{noticia.description ? noticia.description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</Card.Text>
+                </Card.Body>
+            </Card>
+        </a>
     );
 };
 
