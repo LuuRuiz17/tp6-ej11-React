@@ -3,8 +3,7 @@ import Noticia from "./Noticia";
 const ListaNoticias = ({ noticia }) => {
 
     {
-        console.log("Desde listaNoticias");
-        console.log(noticia);
+        // console.log(noticia);
 
     }
     return (
