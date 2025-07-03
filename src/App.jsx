@@ -30,7 +30,8 @@ import { useForm } from "react-hook-form"
 
 function App() {
 
-  const [noticia, setNoticia] = useState({});
+  // const [noticia, setNoticia] = useState([]);
+  // const [noticias, setNoticias] = useState([]);
 
   const {
     register,
@@ -39,15 +40,48 @@ function App() {
 
   useEffect(() => {
     obtenerNoticia();
-  }, []);
+    console.log("Lo que tiene noticias: ");
+    console.log(noticias);
+  } , []);
+
+  // const filtrarRespuesta = async (dato) => {
+  //   // console.log(dato.filtro);
+  //   const respuesta = await fetch(`https://newsdata.io/api/1/latest?apikey=pub_22b6a37c0d77443c9b412c3fa017180e&language=es&category=${dato.filtro}`);
+  //   if(respuesta.status === 200){
+  //     const noticia = await respuesta.json();
+  //     setNoticia(noticia.results[0]);
+  //     setNoticias([...noticias, ...noticia.results]);
+  //     console.log("Array con las 10 noticias");
+  //     console.log(noticias);
+  //   }
+  //   console.log(noticias);
+  // }
+
+  // const obtenerNoticia = async () => {
+  //   try {
+  //     const respuesta = await fetch('https://newsdata.io/api/1/latest?apikey=pub_22b6a37c0d77443c9b412c3fa017180e&country=ar&language=es');
+  //     if (respuesta.status === 200) {
+  //       const noticia = await respuesta.json();
+  //       setNoticia(noticia.results[0]);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error al obtener la noticia:", error);
+  //   }
+  // };
+
+
+
+
+  const [noticias, setNoticias] = useState([])
+
 
   const filtrarRespuesta = async (dato) => {
-    console.log(dato.filtro);
-    const respuesta = await fetch(`https://newsdata.io/api/1/latest?apikey=pub_22b6a37c0d77443c9b412c3fa017180e&language=es&category=${dato.filtro}`);
-    if(respuesta.status === 200){
-      const noticia = await respuesta.json();
-      setNoticia(noticia.results[0]);
-    }
+    // console.log(dato.filtro);
+    // const respuesta = await fetch(`https://newsdata.io/api/1/latest?apikey=pub_22b6a37c0d77443c9b412c3fa017180e&language=es&category=${dato.filtro}`);
+    // if (respuesta.status === 200) {
+    //   const noticia = await respuesta.json();
+    //   console.log(noticia);
+    // }
   }
 
   const obtenerNoticia = async () => {
@@ -55,7 +89,9 @@ function App() {
       const respuesta = await fetch('https://newsdata.io/api/1/latest?apikey=pub_22b6a37c0d77443c9b412c3fa017180e&country=ar&language=es');
       if (respuesta.status === 200) {
         const noticia = await respuesta.json();
-        setNoticia(noticia.results[0]);
+        console.log("Resultado de noticias results")
+        console.log(noticia.results);
+        setNoticias(noticia.results);
       }
     } catch (error) {
       console.error("Error al obtener la noticia:", error);
@@ -83,7 +119,8 @@ function App() {
           </Col>
         </Row>
       </Form>
-      <ListaNoticias noticia={noticia}></ListaNoticias>
+      <ListaNoticias noticias={noticias}></ListaNoticias>
+      {/* noticia={noticia} */}
     </>
   )
 }

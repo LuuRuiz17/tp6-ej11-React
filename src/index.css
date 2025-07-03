@@ -1,0 +1,13 @@
+.card {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.cortar-texto {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita a 3 líneas */
+  -webkit-box-orient: vertical; /* Dirección de las líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
