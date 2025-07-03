@@ -1,9 +1,15 @@
 import Noticia from "./Noticia";
 
-const ListaNoticias = () => {
+const ListaNoticias = ({ noticia }) => {
+
+    {
+        console.log("Desde listaNoticias");
+        console.log(noticia);
+
+    }
     return (
         <div className="bg-danger p-3 mt-4 container">
-            <Noticia></Noticia>
+            <Noticia noticia={noticia}></Noticia>
         </div>
     );
 };

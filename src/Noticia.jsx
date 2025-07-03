@@ -1,16 +1,16 @@
 import { Card } from "react-bootstrap";
 
-const Noticia = () => {
+const Noticia = ({noticia}) => {
     return (
         <Card className="w-25">
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" alt="imagen de la Noticia"/>
+            <Card.Img variant="top" src={noticia.image_url} alt="imagen de la Noticia"/>
             <Card.Body>
-                <Card.Text>Fuente</Card.Text>
-                <Card.Title>Título</Card.Title>
-                <Card.Text>Descripción de la noticia..</Card.Text>
+                <Card.Text>{noticia.creator}</Card.Text>
+                <Card.Title>{noticia.title}</Card.Title>
+                <Card.Text>{noticia.description}</Card.Text>
             </Card.Body>
             <Card.Body>
-                <Card.Link href="#">Botón</Card.Link>
+                <Card.Link href={noticia.link}>Ver más</Card.Link>
             </Card.Body>
         </Card>
     );
