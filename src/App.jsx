@@ -1,9 +1,19 @@
+import Titulo from "./Titulo";
+import Busqueda from "./Busqueda"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+
+
 function App() {
+
 
   return (
     <>
-    
-    <h1>  Web de Noticias</h1>
+      <Titulo></Titulo>
+      <Busqueda></Busqueda>
+      
     </>
   )
 }
